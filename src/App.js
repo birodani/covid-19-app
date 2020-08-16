@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Cards, CountryPicker, Chart } from './components';
 
-function App() {
-  return (
-    
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cards></Cards>
+        <CountryPicker></CountryPicker>
+        <Chart></Chart>
+      </div>
+    );
+  }
 }
 
 export default App;
