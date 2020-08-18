@@ -17,7 +17,7 @@ class App extends React.Component {
     console.log();
     return (
       <div className={style.container}>
-        <Cards></Cards>
+        <Cards data={data}></Cards>
         <CountryPicker></CountryPicker>
         <Chart></Chart>
         {JSON.stringify(data)}
