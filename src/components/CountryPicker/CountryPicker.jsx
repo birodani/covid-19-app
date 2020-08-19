@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CountryPicker.module.css';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { fetchCountries } from '../../api/network.connector';
 
-const CountryPickerComponent = () => (
+const CountryPickerComponent = ({ handleCountryChange }) => {
+  
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      await fetchCountries().then(data => {
+        setCountries(data)
+        console.log(data)
+      }
+        );
+    };
+
+    fetchAPI();
+  }, []);
+
+  return (
   <Autocomplete
       id="combo-box-demo"
-      options={countryOptons}
-      getOptionLabel={(option) => option.country}
+      options={countries}
+      getOptionLabel={(country) => country}
       style={{ width: 300 }}
+      onChange={(event,values) => handleCountryChange(values)}
       renderInput={(params) => <TextField {...params} label="Country search" variant="outlined" />}
     >
       <option value="">Global</option> 
-    </Autocomplete>
-);
-
-const countryOptons = [
-  { country: 'Hungary' },
-  { country: 'Italy'}]
+    </Autocomplete>)
+};
 
 export default CountryPickerComponent;
