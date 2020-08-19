@@ -13,15 +13,11 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    combineLatest(fetchData(), fetchCountries())
-      .pipe(distinctUntilChanged())
-      .subscribe(data => this.setState({ data: data[0], countries: data[1] }));
+    fetchData().then(data => this.setState({ data}));
   }
 
   handleCountryChange = async (country) => {
-    const data = await fetchData(country);
-
-    this.setState({ data, country: country });
+    fetchData(country).then(data => this.setState({ data, country: country })); 
   }
 
   render() {
