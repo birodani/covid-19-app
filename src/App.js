@@ -1,6 +1,6 @@
 import React from 'react';
 import { Cards, CountryPicker, Chart } from './components';
-import { fetchData } from './api/network.connector';
+import { fetchData, fetchCountries } from './api/network.connector';
 import style from './App.module.css'
 
 class App extends React.Component {
@@ -11,6 +11,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     fetchData().then(data => this.setState( {data: data}));
+    fetchCountries().then(data=> console.log(data));
   }
   render() {
     const { data } = this.state;
