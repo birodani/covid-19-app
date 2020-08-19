@@ -26,8 +26,7 @@ class App extends React.Component {
       <div className={style.container}>
         <Cards data={data}></Cards>
         <CountryPicker handleCountryChange={this.handleCountryChange}></CountryPicker>
-        <Chart></Chart>
-        {JSON.stringify(country)}
+        <Chart data={data} country={country}></Chart>
       </div>
     );
   }

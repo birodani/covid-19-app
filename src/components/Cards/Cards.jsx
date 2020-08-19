@@ -21,13 +21,13 @@ const CardComponent = ({ data: { confirmed, recovered, deaths, lastUpdate } }) =
                     <Card className={styles.card}>
                         <CardContent>
                         <Typography color="textPrimary" >
-                                Confirmed
+                                Infected
                         </Typography>
                         <Typography variant="subtitle2" component="p" color="textSecondary" gutterBottom>
                                 Number of active COVID-19 cases.
                         </Typography>
                         <Typography variant="h5" component="h2" gutterBottom>
-                            <CountUp start={0} end={confirmed.value} duration={1.5} separator="," />
+                            <CountUp start={0} end={confirmed.value-recovered.value-deaths.value} duration={1.5} separator="," />
                         </Typography>
                         <Divider />
                         <Typography variant="caption" display="block" gutterBottom>
